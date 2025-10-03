@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import WebGLBackground from './webgl-background';
 
 interface CollageImage {
   src: string;
@@ -63,8 +64,9 @@ const collageImages: CollageImage[] = [
 
 const HeroSection = () => {
   return (
-    <section className="bg-stone-950 pb-16 lg:rounded-b-[40px] lg:pt-10 lg:pb-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative bg-stone-950 pb-16 lg:rounded-b-[40px] lg:pt-10 lg:pb-24 overflow-hidden">
+      <WebGLBackground />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-y-16 lg:grid-cols-2 lg:gap-x-16">
           <div className="text-center lg:text-left">
             <div className="mb-6 flex justify-center lg:justify-start">
