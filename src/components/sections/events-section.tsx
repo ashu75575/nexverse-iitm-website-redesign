@@ -17,11 +17,25 @@ const EventsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative flex items-center justify-center">
             <Image
-              src="https://cdn.prod.website-files.com/5c34f4c0ee3329913fc72eac/651c9f8001c6764e856450bc_paid-marketers-collage.webp"
+              src="/registrations.webp"
               alt="Nexverse-IITM community events collage"
               width={550}
               height={550}
-              className="w-full max-w-lg object-contain"
+              className="w-full  max-w-lg object-contain rounded-3xl"
+            />
+            <Image
+              src="/president.webp"
+              alt="Nexverse-IITM community events collage"
+              width={100}
+              height={50}
+              className="w-[200px]  absolute top-5 left-0 max-w-lg object-contain rounded-full"
+            />
+             <Image
+              src="/mentors_1.webp"
+              alt="Nexverse-IITM community events collage"
+              width={100}
+              height={50}
+              className="w-[200px]  absolute bottom-5 right-0 max-w-lg object-contain rounded-4xl "
             />
           </div>
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -48,7 +62,7 @@ const EventsSection = () => {
               </div>
             </div>
             <Link
-              href="#"
+              href="/aboutUs"
               className="mt-12 bg-white text-black font-bold py-4 px-8 rounded-full transition-colors hover:bg-gray-200"
             >
               Learn More

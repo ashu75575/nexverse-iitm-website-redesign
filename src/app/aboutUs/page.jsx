@@ -1,13 +1,16 @@
 "use client"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { FaLinkedin } from "react-icons/fa"
+import Link from "next/link"
 
 const Background = () => {
     return (
-        <div className="absolute inset-0 z-[-2]">
+        <div className="absolute inset-0 z-[-2] bg-black w-full h-full">
             <svg
-                width="1512"
-                viewBox="0 0 1512 10397"
+                className="w-full h-full"
+                preserveAspectRatio="xMidYMid slice"
+                viewBox="0 0 1400 10000"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -50,237 +53,161 @@ const Background = () => {
         </div>
     )
 }
-const teamMembers = [
-    {
-        name: "Amaani Arora",
-        title: "President",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/amaani-arora-65028a263/"
-        }],
-        image: "/amaanii.png",
-    },
-    {
-        name: "Chirag Jain",
-        title: "Vice President",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/chirag-jain-6574902a0/"
-        }],
-        featured: true,
-        image: "/chirag.png",
-    },
-    {
-        name: "Stuti Sharma",
-        title: "General Secretary",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/stuti-sharma240506/"
-        }],
-        image: "/stuti.jpg",
-    },
-    {
-        name: "Tushar Sharma",
-        title: "Web Development Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/tushar-sharma-6a037a281/"
-        }],
-        image: "/tushar.png",
-    },
-    {
-        name: "Tejveer Singh",
-        title: "Web Development Co-Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/tejveer-singh-3133a7323/"
-        }],
-        image: "/tejveer.jpg",
-    },
-    {
-        name: "Akshat Jain",
-        title: "Graphic Designing Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/akshat-jain-b733b81b6"
-        }],
-        image: "/akshat.jpg",
-    },
-    {
-        name: "Ayush Kumar",
-        title: "PR and Sponsorship Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "#"
-        }],
-        image: "/ayushkumar.jpg",
-    },
-    {
-        name: "Tanya Gusain",
-        title: "Event Management Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/taniyagusain/"
-        }],
-        image: "/taniya.png",
-    },
-    {
-        name: "Hrishabh Raj",
-        title: "Event Management Co-Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/hrishabhraj05/"
-        }],
-        image: "/hrishabh.jpg",
-    },
-    {
-        name: "Sakshi Sharma",
-        title: "Publicity Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/sakshi-sharma-69b371314/"
-        }],
-        image: "/sakshi.png",
-    },
-    {
-        name: "Kunjal Kharb",
-        title: "Publicity Co-Head",
-        socials: [{
-            name: 'linkedin',
-            icon: (<FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />),
-            link: "https://www.linkedin.com/in/kunjal-kharb-463986316/"
-        }],
-        image: "/kunjal.jpg",
-    },
-]
-const coordinators = [
-    {
-        name: "Mr. Gautam Kumar",
-        role: "Assistant Professor",
-        image: "/chirag.png", // Put the correct image path
-    },
-    {
-        name: "Dr. Saima Saleem",
-        role: "Assistant Professor",
-        image: "/chirag.png", // Put the correct image path
-    },
-];
+
 export default function Page() {
     return (
-        <div className="font-sans  text-gray-50 relative h-fit overflow-hidden">
-                <Background />
+        <div className="font-sans text-gray-50 relative overflow-hidden min-h-screen">
+            <Background />
 
-                {/* Hero Section */}
-                <section className="flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-8">
-                    <motion.h1
-                        className="mt-6 max-w-2xl text-lg sm:text-xl md:text-2xl text-gray-100"
-                    >
-                        Where innovation meets impact
-                    </motion.h1>
-                    <motion.div
-                        className="text-5xl md:text-6xl lg:text-7xl xl:text-[7.5rem] text-center font-bold max-w-9xl leading-tight sm:leading-tight md:leading-[1.025] tracking-wide sm:tracking-wider uppercase mt-4 sm:mt-6 relative"
-                    >
-                        <span className="w-full inline text-center">A community of</span>
-                        <span className="w-full inline-flex items-end justify-end gap-5 text-right">
-                            <span className="w-32 h-32 flex items-center justify-center " > <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480"><path d="M371.3 294.4 480 240l-108.7-54.4 38.4-115.3-115.3 38.4L240 0l-54.4 108.7L70.3 70.3l38.4 115.3L0 240l108.7 54.4-38.4 115.3 115.3-38.4L240 480l54.4-108.7 115.3 38.4-38.4-115.3z" fill="#15CFC0"></path></svg></span>
-                            innovators</span>
-                        <span className="w-fit inline-block text-left">& creators</span>
-                    </motion.div>
-                </section>
+            {/* About Section */}
+            <section className="p-6 sm:p-8 max-w-7xl mt-9 mx-auto">
+                <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-medium mt-14 mb-16 sm:mb-24 uppercase leading-tight">
+                    ABOUT <br /> NEXVERSE
+                </h2>
+                <h3 className="border-b ml-auto max-w-3xl border-zinc-100 pb-3 sm:pb-4 text-2xl sm:text-3xl mb-6 sm:mb-8">
+                    Our Vision
+                </h3>
+                <p className="text-lg sm:text-xl md:text-2xl ml-auto max-w-3xl leading-relaxed">
+                    Nexverse is IITM's vibrant tech and innovation society, built to spark creativity, collaboration, and growth. We believe college is more than classrooms—it’s a launchpad for ideas that can change the world. Our mission is to empower students to explore cutting-edge technology, gain real-world skills, and connect with like-minded innovators ready to shape the future.
+                </p>
+            </section>
 
-
-                {/* Video Placeholder */}
-                <div className="mt-8 w-full mx-auto max-w-7xl aspect-video bg-gray-300 flex items-center justify-center">
-                    <span>Intro Video Coming Soon</span>
+            {/* What We Do Section */}
+            <section className="p-6 sm:p-8 max-w-7xl mt-9 mx-auto">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-medium mt-14 mb-8 sm:mb-12 uppercase text-left">
+                    WHAT WE DO?
+                </h2>
+                <p className="text-lg sm:text-xl md:text-2xl max-w-4xl mb-8 sm:mb-10 leading-relaxed">
+                    At Nexverse, we turn curiosity into action. From hands-on workshops to high-energy hackathons, every event is designed to inspire and challenge. We host interactive seminars with industry leaders, organize technical and non-technical competitions, and run skill-building sessions to help students stay ahead in today’s fast-moving tech landscape.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    {[
+                        { title: "Workshops", desc: "Hands-on sessions in AI, Web, Data Science and more." },
+                        { title: "Hackathons", desc: "24-hour sprints like NexHack to build and innovate." },
+                        { title: "Seminars", desc: "Talks with industry leaders and innovators." },
+                        { title: "Community", desc: "Fun meetups and networking to connect peers." },
+                    ].map((item, i) => (
+                        <div key={i} className="bg-zinc-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                            <div className="flex flex-col items-start p-5 sm:p-6">
+                                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-cyan-400">{item.title}</h3>
+                                <p className="text-gray-200 text-base sm:text-lg">{item.desc}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
+            </section>
 
-                {/* About Section */}
-                <section className="p-8 max-w-7xl mt-9 mx-auto">
-                    <h2 className="text-9xl font-medium mt-14 mb-24 uppercase">ABOUT <br /> NEXVERSE</h2>
+            {/* Team Section */}
+            <section className="p-6 sm:p-8 max-w-7xl mt-32 mx-auto">
+                <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold pb-4 sm:pb-6 w-fit border-b-2 border-b-white leading-tight">
+                    PEOPLE WHO MAKE US A TEAM
+                </h2>
+                <div className="bg-gray-300 mt-12 sm:mt-24 h-[400px] sm:h-[600px] md:h-[700px] flex items-center justify-center rounded-xl overflow-hidden">
+                    <Image
+                        src="/team_img_2.webp"
+                        alt="Team"
+                        width={680}
+                        height={700}
+                        className="w-full h-full object-cover object-bottom brightness-125"
+                    />
+                </div>
+            </section>
 
-                    <h3 className="border-b ml-auto max-w-3xl border-zinc-100 pb-4 text-3xl mb-8">Our Vision</h3>
-                    <p className="text-2xl ml-auto max-w-3xl">
-                        Nexverse is IITM's vibrant tech and innovation society, built to spark creativity, collaboration, and growth. We believe college is more than classrooms—it’s a launchpad for ideas that can change the world. Our mission is to empower students to explore cutting-edge technology, gain real-world skills, and connect with like-minded innovators ready to shape the future.
-                    </p>
-                </section>
-
-                {/* What We Do Section */}
-                <section className="p-8 max-w-7xl mt-9 mx-auto">
-                    <h2 className="text-7xl font-medium mt-14 mb-12 uppercase text-left">WHAT WE DO?</h2>
-                    <p className="text-2xl max-w-4xl mb-10">
-                        At Nexverse, we turn curiosity into action. From hands-on workshops to high-energy hackathons, every event is designed to inspire and challenge. We host interactive seminars with industry leaders, organize technical and non-technical competitions, and run skill-building sessions to help students stay ahead in today’s fast-moving tech landscape.
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="bg-zinc-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div className="flex flex-col items-start p-6">
-                                <h3 className="text-2xl font-bold mb-2 text-cyan-400">Workshops</h3>
-                                <p className="text-gray-200 text-lg">Hands-on sessions in AI, Web, Data Science and more.</p>
+            {/* Faculty Section */}
+            <section className="p-6 sm:p-8 max-w-7xl mx-auto mt-24 sm:mt-32 text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase pb-4 sm:pb-6 w-fit border-b-2 border-b-white">
+                    OUR Faculty Coordinators
+                </h2>
+                <div className="grid md:grid-cols-2 mt-10 sm:mt-12 gap-8 sm:gap-16 md:px-16 lg:px-32">
+                    {[
+                        {
+                            name: "Mr. Gautam Kumar",
+                            img: "https://www.iitmjanakpuri.com/faculty/images/commerce/DSC06609.jpg",
+                        },
+                        {
+                            name: "Dr. Saima Saleem",
+                            img: "https://www.iitmjanakpuri.com/faculty/images/commerce/DSC06500.jpg",
+                        },
+                    ].map((f, i) => (
+                        <div key={i} className="group overflow-hidden">
+                            <img
+                                className="h-[350px] sm:h-[450px] md:h-[500px] w-full rounded-md object-cover object-top transition-all duration-500 group-hover:h-[420px] group-hover:rounded-xl"
+                                src={f.img}
+                                alt="faculty coordinator"
+                            />
+                            <div className="px-2 pt-2 sm:pt-4">
+                                <div className="flex justify-between">
+                                    <h3 className="text-base sm:text-lg font-medium transition-all duration-500 group-hover:tracking-wider">{f.name}</h3>
+                                </div>
+                                <div className="mt-1">
+                                    <span className="inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                                        Faculty Coordinator
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div className="bg-zinc-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div className="flex flex-col items-start p-6">
-                                <h3 className="text-2xl font-bold mb-2 text-cyan-400">Hackathons</h3>
-                                <p className="text-gray-200 text-lg">24-hour sprints like NexHack to build and innovate.</p>
-                            </div>
-                        </div>
-                        <div className="bg-zinc-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div className="flex flex-col items-start p-6">
-                                <h3 className="text-2xl font-bold mb-2 text-cyan-400">Seminars</h3>
-                                <p className="text-gray-200 text-lg">Talks with industry leaders and innovators.</p>
-                            </div>
-                        </div>
-                        <div className="bg-zinc-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div className="flex flex-col items-start p-6">
-                                <h3 className="text-2xl font-bold mb-2 text-cyan-400">Community</h3>
-                                <p className="text-gray-200 text-lg">Fun meetups and networking to connect peers.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    ))}
+                </div>
+            </section>
 
-                {/* Team Section */}
-                <section className="p-8 max-w-7xl  mt-32 mx-auto">
-                    <h2 className="text-7xl font-semibold pb-6 w-fit border-b-2 border-b-white">PEOPLE WHO MAKE US A TEAM</h2>
-                    <div className="bg-gray-300  mt-24 h-[500px] flex items-center justify-center">Team Group Photo Placeholder</div>
-                </section>
-
-                <section className="p-8 max-w-7xl bg-zinc-950 mx-auto mt-32 text-white">
-                    <h2 className="text-5xl font-semibold uppercase  pb-6 w-fit border-b-2 border-b-white">OUR Facultiy Coordinator</h2>
-                    <div className="grid md:grid-cols-2 mt-12 gap-16">
-                        <div className="bg-zinc-400 h-[600px] rounded-2xl "></div>
-                        <div className="bg-zinc-400 h-[600px] rounded-2xl mt-24 "></div>
-                    </div>
-                </section>
-                <section className="p-8 max-w-7xl  mx-auto mt-32 text-white">
-                    <h2 className="text-5xl font-semibold uppercase pb-6 w-fit border-b-2 border-b-white">OUR Amazing team</h2>
-                    <div className="grid md:grid-cols-2 mx-24 mt-12 gap-16">
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl"></div>
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl mt-24 "></div>
-                    </div>
-                    <div className="grid md:grid-cols-2 mx-24 mt-12 gap-16">
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl"></div>
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl mt-24 "></div>
-                    </div>
-                    <div className="grid md:grid-cols-2 mx-24 mt-12 gap-16">
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl"></div>
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl mt-24 "></div>
-                    </div>
-                    <div className="grid md:grid-cols-2 mx-24 mt-12 gap-16">
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl"></div>
-                        <div className="bg-zinc-400 h-[400px] rounded-2xl mt-24 "></div>
-                    </div>
-                </section>
-
+            {/* Core Team Section */}
+            <section className="p-6 sm:p-8 max-w-7xl mx-auto mt-24 sm:mt-32 text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase pb-4 sm:pb-6 w-fit border-b-2 border-b-white">
+                    OUR Amazing Team
+                </h2>
+                <TeamSection />
+            </section>
         </div>
+    )
+}
+
+function TeamSection() {
+    const members = [
+        { name: "Amaani Arora", title: "President", image: "/amaanii.png", link: "https://www.linkedin.com/in/amaani-arora-65028a263/" },
+        { name: "Chirag Jain", title: "Vice President", image: "/chirag.png", link: "https://www.linkedin.com/in/chirag-jain-6574902a0/" },
+        { name: "Stuti Sharma", title: "General Secretary", image: "/stuti.jpg", link: "https://www.linkedin.com/in/stuti-sharma240506/" },
+        { name: "Tushar Sharma", title: "Web Development Head", image: "/tushar.png", link: "https://www.linkedin.com/in/tushar-sharma-6a037a281/" },
+        { name: "Tejveer Singh", title: "Web Development Co-Head", image: "/tejveer.jpg", link: "https://www.linkedin.com/in/tejveer-singh-3133a7323/" },
+        { name: "Akshat Jain", title: "Graphic Designing Head", image: "/akshat.jpg", link: "https://www.linkedin.com/in/akshat-jain-b733b81b6" },
+        { name: "Ayush Kumar", title: "PR and Sponsorship Head", image: "/ayushkumar.jpg", link: "#" },
+        { name: "Tanya Gusain", title: "Event Management Head", image: "/taniya.png", link: "https://www.linkedin.com/in/taniyagusain/" },
+        { name: "Hrishabh Raj", title: "Event Management Co-Head", image: "/hrishabh.jpg", link: "https://www.linkedin.com/in/hrishabhraj05/" },
+        { name: "Sakshi Sharma", title: "Publicity Head", image: "/sakshi.png", link: "https://www.linkedin.com/in/sakshi-sharma-69b371314/" },
+        { name: "Kunjal Kharb", title: "Publicity Co-Head", image: "/kunjal.jpg", link: "https://www.linkedin.com/in/kunjal-kharb-463986316/" },
+    ]
+
+    return (
+        <section className="py-10 sm:py-16 md:py-24">
+            <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                {members.map((member, index) => (
+                    <div key={index} className="group overflow-hidden">
+                        <img
+                            className="h-[20rem] sm:h-[23rem] md:h-[25rem] w-full rounded-md object-cover object-top transition-all duration-500 group-hover:h-[21rem] sm:group-hover:h-[22.5rem] group-hover:rounded-xl"
+                            src={member.image}
+                            alt={member.name}
+                        />
+                        <div className="px-2 pt-2 sm:pt-4">
+                            <div className="flex justify-between">
+                                <h3 className="text-sm sm:text-base md:text-lg font-medium transition-all duration-500 group-hover:tracking-wider">
+                                    {member.name}
+                                </h3>
+                                <span className="text-xs md:text-sm">_0{index + 1}</span>
+                            </div>
+                            <div className="mt-1 flex items-center justify-between">
+                                <span className="inline-block translate-y-6 text-xs sm:text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                                    {member.title}
+                                </span>
+                                <Link
+                                    href={member.link}
+                                    className="translate-y-8 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+                                >
+                                    <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-cyan-300 transition-colors duration-300" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     )
 }

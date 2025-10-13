@@ -11,25 +11,19 @@ import TestimonialQuote from "@/components/sections/testimonial-quote";
 import CtaSection from "@/components/sections/cta-section";
 import Footer from "@/components/sections/footer";
 import Navbar from "@/components/sections/Navbar";
-
+import Collage from "@/components/Collage";
 export default function HomePage() {
   return (
     <main className="">
-      {/* <AnnouncementBar /> */}
-      <Navbar/>
       <HeroSection />
       <IntroSection />
-      <div className="space-y-20 lg:space-y-32">
         <MatchSection />
-        <StrategySection />
-        <MeasureSection />
         <RepurposeSection />
+        <Collage/>
+        <MeasureSection />
         <TestimonialsSection />
         <EventsSection />
         <TestimonialQuote />
-      </div>
-      <CtaSection />
-      <Footer />
     </main>
   );
 }

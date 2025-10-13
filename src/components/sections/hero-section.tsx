@@ -1,217 +1,168 @@
 "use client"
-import React, { useState, useEffect } from 'react';
 
-interface CollageImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  side: 'left' | 'right';
-  top: string;
-  rotation: number;
-  size: string;
-}
+import type React from "react"
+import { useEffect, useRef, useState } from "react"
+import { motion, useReducedMotion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import Aurora from "../Aurora"
 
-const collageImages: CollageImage[] = [
-  {
-    src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/8a09d4f9-a021-47ef-83dc-143f91d637da-hashtagpaid-clone-vercel-app/assets/images/next-324711-6518db831add88a3c3d25b91_trystane-9.webp?",
-    alt: "Students collaborating during a hackathon",
-    width: 288,
-    height: 180,
-    side: 'left',
-    top: '5%',
-    rotation: -8,
-    size: 'w-56 h-36'
-  },
-  {
-    src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/8a09d4f9-a021-47ef-83dc-143f91d637da-hashtagpaid-clone-vercel-app/assets/images/next-173300-6518e24b61008515c9e8dbd9_influencer-11.webp?",
-    alt: "IITM student presenting at a tech event",
-    width: 136,
-    height: 180,
-    side: 'right',
-    top: '10%',
-    rotation: 12,
-    size: 'w-40 h-56'
-  },
-  {
-    src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/8a09d4f9-a021-47ef-83dc-143f91d637da-hashtagpaid-clone-vercel-app/assets/images/next-691789-6517d092d6409bc0547bd4dd_spencer-barbosa-5.webp?",
-    alt: "Portrait of a smiling student innovator",
-    width: 136,
-    height: 180,
-    side: 'left',
-    top: '38%',
-    rotation: 6,
-    size: 'w-44 h-56'
-  },
-  {
-    src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/8a09d4f9-a021-47ef-83dc-143f91d637da-hashtagpaid-clone-vercel-app/assets/images/next-699072-656fb8380fb2e670f3b2eaee_vintagedolls-comp-2.webp?",
-    alt: "A dynamic tech workshop in progress",
-    width: 136,
-    height: 136,
-    side: 'right',
-    top: '48%',
-    rotation: -10,
-    size: 'w-48 h-48'
-  },
-  {
-    src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/8a09d4f9-a021-47ef-83dc-143f91d637da-hashtagpaid-clone-vercel-app/assets/images/next-894540-6518d6798c3120cae318c57e_tingmystyle-4.webp?",
-    alt: "Creative student project showcase",
-    width: 288,
-    height: 180,
-    side: 'left',
-    top: '70%',
-    rotation: -12,
-    size: 'w-60 h-40'
-  },
-  {
-    src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/8a09d4f9-a021-47ef-83dc-143f91d637da-hashtagpaid-clone-vercel-app/assets/images/next-565215-6518dcb423e88eb0c2b4744c_karinabnyc-10.webp?",
-    alt: "Informal networking at a campus event",
-    width: 136,
-    height: 180,
-    side: 'right',
-    top: '78%',
-    rotation: 8,
-    size: 'w-44 h-56'
-  },
-];
-
-const HeroSection = () => {
-  const [scrollY, setScrollY] = useState(0);
+// Local parallax helper: uses rAF for smooth updates and respects reduced motion
+function useParallax(multiplier = 0.15) {
+  const [y, setY] = useState(0)
+  const frame = useRef<number | null>(null)
+  const reduce = useReducedMotion()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    if (reduce) return
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onScroll = () => {
+      if (frame.current) return
+      frame.current = window.requestAnimationFrame(() => {
+        setY(window.scrollY || 0)
+        frame.current = null
+      })
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      if (frame.current) cancelAnimationFrame(frame.current)
+      window.removeEventListener("scroll", onScroll)
+    }
+  }, [reduce])
+
+  const offset = reduce ? 0 : Math.max(-60, Math.min(60, y * multiplier))
+  return offset
+}
+
+function StarIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 480 480" aria-hidden="true" focusable="false" {...props}>
+      <path
+        d="M371.3 294.4 480 240l-108.7-54.4 38.4-115.3-115.3 38.4L240 0l-54.4 108.7L70.3 70.3l38.4 115.3L0 240l108.7 54.4-38.4 115.3 115.3-38.4L240 480l54.4-108.7 115.3 38.4-38.4-115.3z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+const Background = () => {
+  return (
+      <div className="absolute bg-black inset-0 z-[-2] min-w-screen ">
+        <Aurora
+        colorStops={["#96e0ff", "#72c1e9", "#72c1e9"]}
+        blend={0.5}
+        amplitude={0.6}
+        speed={0.6}
+        />
+          {/* <svg
+              width="100%"
+              viewBox="0 0 1400 10000"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+          >
+              <g clipPath="url(#clip0_243_2)">
+                  <rect width="1512" height="16397" fill="#0c0c0c" />
+                  <g opacity="0.4" filter="url(#filter0_f_243_2)">
+                      <path
+                          d="M387.38 137.553C355.297 -107.774 513.625 -371.892 752.935 -403.188C992.246 -434.485 1087.35 -273.117 1119.44 -27.7906C1151.52 217.536 993.208 -36.6224 796.88 -10.947C557.569 20.3495 419.463 382.88 387.38 137.553Z"
+                          fill="#30bfdc"
+                      />
+                  </g>
+                  <g filter="url(#filter1_f_243_2)">
+                      <circle cx="15" cy="3176" r="185" fill="#30bfdc" />
+                  </g>
+                  <g filter="url(#filter2_f_243_2)">
+                      <circle cx="1275" cy="840" r="64" fill="#30bfdc" />
+                  </g>
+              </g>
+              <defs>
+                  <filter id="filter0_f_243_2" x="239.258" y="-551.062" width="1028.33" height="917.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                      <feGaussianBlur stdDeviation="72" result="effect1_foregroundBlur_243_2" />
+                  </filter>
+                  <filter id="filter1_f_243_2" x="-774" y="2387" width="1578" height="1578" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                      <feGaussianBlur stdDeviation="302" result="effect1_foregroundBlur_243_2" />
+                  </filter>
+                  <filter id="filter2_f_243_2" x="967" y="532" width="616" height="616" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                      <feGaussianBlur stdDeviation="122" result="effect1_foregroundBlur_243_2" />
+                  </filter>
+                  <clipPath id="clip0_243_2">
+                      <rect width="1512" height="6397" fill="white" />
+                  </clipPath>
+              </defs>
+          </svg> */}
+      </div>
+  )
+}
+
+export default function HeroSection() {
+  const logoOffset = useParallax(0.12)
+  const titleOffset = useParallax(0.06)
 
   return (
-    <section className="relative bg-gradient-to-br from-zinc-950 via-black/90 to-stone-950 min-h-screen overflow-hidden">
-     
-      {/* Parallax Images - Left Side */}
-      <div className="absolute left-3.5 top-0 w-1/4 h-full hidden lg:block">
-        {collageImages
-          .filter(img => img.side === 'left')
-          .map((image, index) => (
-            <div
-              key={`left-${index}`}
-              className="absolute"
-              style={{
-                top: image.top,
-                left: '8%',
-                transform: `translateY(${scrollY * 0.5}px) rotate(${image.rotation}deg)`,
-                transition: 'transform 0.1s ease-out',
-              }}
-            >
-              <div className={`${image.size} relative group`}>
-                
-                {/* Image container */}
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/10">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden rounded-b-[60px]  ">
 
-      {/* Parallax Images - Right Side */}
-      <div className="absolute right-5 top-0 w-1/4 h-full hidden lg:block">
-        {collageImages
-          .filter(img => img.side === 'right')
-          .map((image, index) => (
-            <div
-              key={`right-${index}`}
-              className="absolute"
-              style={{
-                top: image.top,
-                right: '8%',
-                transform: `translateY(${scrollY * 0.5}px) rotate(${image.rotation}deg)`,
-                transition: 'transform 0.1s ease-out',
-              }}
-            >
-              <div className={`${image.size} relative group`}>
-                
-                {/* Image container */}
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/10">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
+      <Background/>
 
-  
+      <div className="relative mx-auto max-w-7xl flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+        <div className="flex flex-col-reverse lg:flex-row-reverse items-center justify-between gap-10 md:gap-12 lg:gap-16 ">
+          {/* Text Section */}
+          <motion.div
+            className="w-full px-4 sm:px-6 md:px-8 lg:w-7/12"
+            style={{ translateY: titleOffset }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+          >
+            <h1 className="text-balance font-bold text-5xl md:text-6xl lg:text-7xl tracking-tight uppercase">
+              {/* Line 1 */}
+              <span className="block text-center sm:text-left text-5xl lg:text-6xl text-white">
+                A community of
+              </span>
 
-      {/* Center Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl">
-          {/* Logo with glow effect */}
-          <div className="mb-12 relative">
+              {/* Line 2: 'innovators' with star */}
+              <span className="mt-2 block text-center sm:text-right  text-white">
+                <span className="inline-flex items-center justify-center sm:justify-end gap-3 md:gap-4">
+                  <span className="inline-flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center text-white">
+                    <StarIcon className="h-full w-full" />
+                  </span>
+                  <span className="text-white">innovators</span>
+                </span>
+              </span>
+
+              {/* Line 3: '& creators' */}
+              <span className="mt-2 block text-center sm:text-left  text-white">
+                &amp; <span className="text-white">creators</span>
+              </span>
+            </h1>
+
+            <p className="mt-6 mx-auto sm:mx-0 max-w-xl sm:max-w-2xl text-pretty text-sm sm:text-base md:text-lg text-white text-center sm:text-left">
+              Build, learn, and ship together. Explore ideas, share knowledge, and collaborate with peers pushing the
+              boundaries of what’s possible.
+            </p>
+          </motion.div>
+
+
+          {/* Logo Section */}
+          <motion.div
+            className="w-full lg:w-5/12 flex items-center lg:border-r border-0 justify-center"
+            style={{ translateY: logoOffset }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+          >
             <img
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/logo1-1759402940398.png"
-              alt="Nexverse Logo"
-              className="h-auto w-[340px] mx-auto relative z-10"
+              alt="Nexverse logo"
+              className="relative z-10 h-auto w-[380px] sm:w-[300px] md:w-[360px] lg:w-[360px] xl:w-[400px]"
+              loading="eager"
+              decoding="async"
+              crossOrigin="anonymous"
             />
-          </div>
-          
-          {/* Heading with gradient text */}
-          <h1 className="text-2xl font-normal leading-[1.5] text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-zinc-50 to-zinc-100 sm:text-2xl md:text-3xl lg:text-2xl xl:text-4xl xl:max-w-[90%] mx-auto px-4 mb-8">
-            A vibrant society where Technology and Creativity come together to build, innovate and inspire
-          </h1>
-
-          {/* Decorative line */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="h-px w-20 bg-gradient-to-r from-transparent to-purple-500"></div>
-            <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></div>
-            <div className="h-px w-20 bg-gradient-to-l from-transparent to-blue-500"></div>
-          </div>
-
-          {/* Additional tagline */}
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-            Join us in shaping the future through innovation and collaboration
-          </p>
+          </motion.div>
         </div>
       </div>
-
-      {/* Mobile Images (visible on smaller screens) */}
-      <div className="lg:hidden relative mt-16 mx-auto h-[450px] w-full max-w-md px-4">
-        {collageImages.slice(0, 4).map((image, index) => (
-          <div
-            key={`mobile-${index}`}
-            className="absolute"
-            style={{
-              top: image.top,
-              [image.side]: '5%',
-              transform: `rotate(${image.rotation}deg)`,
-            }}
-          >
-            <div className={`${image.size} relative`}>
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25"></div>
-              <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/10">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      
     </section>
-  );
-};
-
-export default HeroSection;
+  )
+}

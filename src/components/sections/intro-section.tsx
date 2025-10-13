@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { MagneticButton } from "../magnetic-button";
+import Link from "next/link";
 
 interface AnimatedTextProps {
   text: string;
@@ -14,19 +16,24 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className }) => {
     offset: ["start start", "end end"],
   });
 
-
+  const events = [
+    { name: 'Hackathons', href: '#' },
+    { name: 'Workshops', href: '#' },
+    { name: 'Tech Talks', href: '#' },
+    { name: 'Networking', href: '#' },
+    { name: 'Guest Lectures', href: '#' },
+  ];
   const words = text.split(" ");
   const wordsCount = words.length;
 
   return (
     <div ref={targetRef} className="w-full relative h-[300vh]">
-      <div className="sticky mx-auto  top-24 w-full flex overflow-x-hidden flex-wrap items-center justify-center">
-      
+
+      <div className="sticky mx-auto top-24 w-full flex overflow-x-hidden flex-col items-center justify-center">
         <p className="text-4xl max-w-5xl mx-auto mt-14 font-bold tracking-tight text-center text-foreground sm:text-4xl lg:text-5xl">
           {words.map((word, idx) => {
-            // Calculate when this word should fully appear based on its index
-            const wordAppearProgressStart = (idx / wordsCount) * 0.8; // start showing at this progress
-            const wordAppearProgressEnd = wordAppearProgressStart + 0.1; // small range to animate opacity
+            const wordAppearProgressStart = (idx / wordsCount) * 0.8;
+            const wordAppearProgressEnd = wordAppearProgressStart + 0.1;
 
             const opacity = useTransform(
               scrollYProgress,
@@ -55,9 +62,28 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className }) => {
           })}
         </p>
         <p className="mx-auto text-center mt-6 max-w-3xl text-lg text-muted-foreground sm:text-xl">
-        Join a thriving student community driving tech and non-tech events,
-        hackathons, and collaborations that inspire growth and creativity.
-      </p>
+          Join a thriving student community driving tech and non-tech events,
+          hackathons, and collaborations that inspire growth and creativity.
+        </p>
+
+        <div className="flex flex-wrap mt-16 justify-center lg:justify-start gap-5 ">
+          {events.map((event) => (
+            <p
+              key={event.name}
+              className="bg-cyan-200 text-accent-foreground font-semibold py-2 px-4 rounded-full text-lg transition-transform hover:scale-105"
+            >
+              {event.name}
+            </p>
+          ))}
+        </div>
+        <div className="w-full flex items-center justify-center py-16">
+
+          <MagneticButton>
+            <Link href={'/aboutUs'} className="bg-zinc-950 hover:bg-zinc-900 transition-colors px-10 text-lg text-white py-4 rounded-full">
+              Learn More About Us
+            </Link>
+          </MagneticButton>
+        </div>
       </div>
     </div>
   );

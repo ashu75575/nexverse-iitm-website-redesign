@@ -22,13 +22,13 @@ export default function Collage() {
   const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
   const pictures = [
-    { src: "/celebration_img.JPG", scale: scale4 },
-    { src: "/playbook.jpeg", scale: scale4 },
-    { src: "/collab_img.JPG", scale: scale5 },
+    { src: "/team_img_1.webp", scale: scale4 },
+    { src: "/celebration_img.JPG ", scale: scale4 },
+    { src: "/heads_coheads_1.webp", scale: scale5 },
     { src: "/front.jpeg", scale: scale6 },
     { src: "/image.png", scale: scale6 },
-    { src: "/collab_img.JPG", scale: scale8 },
-    { src: "/collab_img.JPG", scale: scale9 },
+    { src: "/event_img_2.JPG", scale: scale8 },
+    { src: "/hackathon_1.webp", scale: scale9 },
   ];
 
  const positions = [
@@ -44,7 +44,7 @@ export default function Collage() {
   const smoothEase = [0.25, 0.1, 0.25, 1];
 
   return (
-    <div ref={container} className="h-[300vh] relative ">
+    <div ref={container} className="h-[300vh] bg-black relative ">
       <div className="sticky top-0 h-screen  overflow-hidden">
         {pictures.map(({ src, scale }, index) => (
           <motion.div

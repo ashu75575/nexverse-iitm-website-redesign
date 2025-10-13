@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Twitter, Linkedin, Instagram } from 'lucide-react';
+import Image from 'next/image';
 
 type FooterLink = {
   label: string;
@@ -9,7 +10,7 @@ type FooterLink = {
 const aboutLinks: FooterLink[] = [
   { label: 'Our Mission', href: '#' },
   { label: 'The Team', href: '#' },
-  { label: 'Join Us', href: '#' },
+  // { label: 'Join Us', href: '#' },
   { label: 'Contact', href: '#' },
 ];
 
@@ -55,28 +56,21 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-8 lg:pb-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_400px] lg:gap-16">
           <div>
-            <div className="mb-12">
-              <Link href="/" className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white text-black">
-                <span className="text-xl font-bold tracking-tight">NI</span>
-              </Link>
-            </div>
+
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
               <FooterLinkColumn title="About" links={aboutLinks} />
               <FooterLinkColumn title="Events" links={eventLinks} />
-              <FooterLinkColumn title="Resources" links={resourceLinks} />
-              <FooterLinkColumn title="Team" links={teamLinks} />
+              {/* <FooterLinkColumn title="Resources" links={resourceLinks} /> */}
+              {/* <FooterLinkColumn title="Team" links={teamLinks} /> */}
             </div>
           </div>
 
-          <div className="flex flex-col rounded-3xl bg-secondary p-8 text-foreground">
-            <p className="font-bold text-xs uppercase tracking-widest text-muted-foreground">Project Spotlight</p>
-            <h4 className="mt-4 text-2xl font-bold leading-tight">Pioneering the Metaverse for Education</h4>
-            <div className="mt-6 flex-grow rounded-xl bg-muted"></div>
-            <Link href="#" className="mt-8 flex items-center font-semibold text-foreground group">
-              Read Case Study
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+          <div className="flex flex-col gap-4 mb-8">
+            <div className="flex  items-center justify-center lg:justify-start gap-6">
+              <Image alt="IITM Logo" width={280} height={260} src="/iitmlogo.png" />
+              <Image alt="nexverse Logo" width={220} height={180} src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/logo1-1759402940398.png" />
+            </div>
+            <p className="text-sm text-gray-400">Institute of Information Technology &amp; Management D-29, <br/>Institutional Area, Janakpuri, New Delhi-110058</p></div>
         </div>
 
         <div className="mt-16 border-t border-white/10 pt-8 lg:mt-24">
