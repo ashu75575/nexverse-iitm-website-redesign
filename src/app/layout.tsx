@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
-import ErrorReporter from "@/components/ErrorReporter";
-import Script from "next/script";
 import Navbar from "@/components/sections/Navbar";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import Footer from "@/components/sections/footer";
@@ -20,15 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <ErrorReporter />
         <SmoothScrolling>
-
           <Navbar />
-
           {children}
-          <VisualEditsMessenger />
-      <Footer/>
-
+          <Footer />
         </SmoothScrolling>
       </body>
     </html>

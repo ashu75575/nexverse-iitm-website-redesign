@@ -20,7 +20,7 @@ export default function HomePage() {
         <MatchSection />
         <RepurposeSection />
         <Collage/>
-        <MeasureSection />
+        {/* <MeasureSection /> */}
         <TestimonialsSection />
         <EventsSection />
         <TestimonialQuote />
