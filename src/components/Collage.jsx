@@ -23,11 +23,11 @@ export default function Collage() {
 
   const pictures = [
     { src: "/team_img_1.webp", scale: scale4 },
-    { src: "/celebration_img.JPG ", scale: scale4 },
+    { src: "/celebration_img.jpg ", scale: scale4 },
     { src: "/heads_coheads_1.webp", scale: scale5 },
     { src: "/front.jpeg", scale: scale6 },
     { src: "/image.png", scale: scale6 },
-    { src: "/event_img_2.JPG", scale: scale8 },
+    { src: "/event_img_2.jpg", scale: scale8 },
     { src: "/hackathon_1.webp", scale: scale9 },
   ];
 
