@@ -84,7 +84,7 @@ function Navbar() {
     <>
       {/* Main Navbar */}
       <div
-        className='w-full fixed top-0 mt-2 left-1/2 -translate-x-1/2 z-50 px-7 py-2 bg-zinc-950/60  backdrop-blur-lg mx-auto max-w-[95%] rounded-4xl  flex justify-between items-center '
+        className='w-full fixed top-2.5  left-1/2 -translate-x-1/2 z-50 px-7 py-2 bg-zinc-950/60  backdrop-blur-lg mx-auto max-w-[90%] rounded-4xl  flex justify-between items-center '
       >
         <motion.div
           className="flex items-center"

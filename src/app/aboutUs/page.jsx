@@ -178,7 +178,7 @@ function TeamSection() {
 
     return (
         <section className="py-10 sm:py-16 md:py-24">
-            <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {members.map((member, index) => (
                     <div key={index} className="group overflow-hidden">
                         <img

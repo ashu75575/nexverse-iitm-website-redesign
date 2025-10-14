@@ -16,12 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <SmoothScrolling>
+      <body className="antialiased max-w-screen box-border">
+        {/* <SmoothScrolling> */}
           <Navbar />
           {children}
           <Footer />
-        </SmoothScrolling>
+        {/* </SmoothScrolling> */}
       </body>
     </html>
   );

@@ -15,29 +15,29 @@ const EventsSection = () => {
     <section className="bg-black text-white rounded-[40px] py-16 lg:py-24">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative flex items-center justify-center">
-            <Image
-              src="/registrations.webp"
-              alt="Nexverse-IITM community events collage"
-              width={550}
-              height={550}
-              className="w-full  max-w-lg object-contain rounded-3xl"
-            />
-            <Image
-              src="/president.webp"
-              alt="Nexverse-IITM community events collage"
-              width={100}
-              height={50}
-              className="w-[200px]  absolute top-5 left-0 max-w-lg object-contain rounded-full"
-            />
-             <Image
-              src="/mentors_1.webp"
-              alt="Nexverse-IITM community events collage"
-              width={100}
-              height={50}
-              className="w-[200px]  absolute bottom-5 right-0 max-w-lg object-contain rounded-4xl "
-            />
-          </div>
+        <div className="relative flex items-center justify-center px-4">
+      <Image
+        src="/registrations.webp"
+        alt="Nexverse-IITM community events collage"
+        width={550}
+        height={550}
+        className="w-full max-w-[300px] sm:max-w-md md:max-w-lg object-contain rounded-3xl"
+      />
+      <Image
+        src="/president.webp"
+        alt="Nexverse-IITM community events collage"
+        width={100}
+        height={50}
+        className="w-[120px] sm:w-[150px] md:w-[200px] absolute top-2 sm:top-3 md:top-5 left-0 sm:left-2 md:left-0 max-w-lg object-contain rounded-full"
+      />
+      <Image
+        src="/mentors_1.webp"
+        alt="Nexverse-IITM community events collage"
+        width={100}
+        height={50}
+        className="w-[120px] sm:w-[150px] md:w-[200px] absolute bottom-2 sm:bottom-3 md:bottom-5 right-0 sm:right-2 md:right-0 max-w-lg object-contain rounded-4xl"
+      />
+    </div>
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2 className="text-5xl font-bold leading-tight">
               We bring the IITM tech community together, IRL and online.

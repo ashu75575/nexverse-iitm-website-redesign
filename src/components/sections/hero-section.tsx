@@ -104,11 +104,11 @@ export default function HeroSection() {
   const titleOffset = useParallax(0.06)
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden rounded-b-[60px]  ">
+    <section className="relative min-h-screen overflow-hidden flex items-center justify-center rounded-b-[60px]  ">
 
       <Background/>
 
-      <div className="relative mx-auto max-w-7xl flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+      <div className="relative mx-auto max-w-7xl flex items-center justify-center px-6 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
         <div className="flex flex-col-reverse lg:flex-row-reverse items-center justify-between gap-10 md:gap-12 lg:gap-16 ">
           {/* Text Section */}
           <motion.div
@@ -116,9 +116,9 @@ export default function HeroSection() {
             style={{ translateY: titleOffset }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
           >
-            <h1 className="text-balance font-bold text-5xl md:text-6xl lg:text-7xl tracking-tight uppercase">
+            <h1 className="text-balance font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight uppercase">
               {/* Line 1 */}
-              <span className="block text-center sm:text-left text-5xl lg:text-6xl text-white">
+              <span className="block text-center sm:text-left text-4xl sm:text-5xl lg:text-6xl text-white">
                 A community of
               </span>
 
@@ -154,7 +154,7 @@ export default function HeroSection() {
             <img
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/logo1-1759402940398.png"
               alt="Nexverse logo"
-              className="relative z-10 h-auto w-[380px] sm:w-[300px] md:w-[360px] lg:w-[360px] xl:w-[400px]"
+              className="relative z-10 h-auto w-[280px] sm:w-[300px] md:w-[360px] lg:w-[360px] xl:w-[400px]"
               loading="eager"
               decoding="async"
               crossOrigin="anonymous"

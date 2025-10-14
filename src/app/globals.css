@@ -151,6 +151,8 @@
     color: var(--foreground);
     font-family: var(--font-body);
     line-height: 1.6;
+    /* overflow-x: hidden; */
+
   }
 
   h1 {
@@ -205,9 +207,4 @@
   * {
     @apply border-border;
   }
-}
-
-/* Hide Next.js error overlay portal */
-nextjs-portal {
-  display: none !important;
 }

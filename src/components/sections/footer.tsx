@@ -10,7 +10,6 @@ type FooterLink = {
 const aboutLinks: FooterLink[] = [
   { label: 'Our Mission', href: '#' },
   { label: 'The Team', href: '#' },
-  // { label: 'Join Us', href: '#' },
   { label: 'Contact', href: '#' },
 ];
 
@@ -19,20 +18,6 @@ const eventLinks: FooterLink[] = [
   { label: 'Hackathons', href: '#' },
   { label: 'Guest Lectures', href: '#' },
   { label: 'Annual Fest', href: '#' },
-];
-
-const resourceLinks: FooterLink[] = [
-  { label: 'Blog', href: '#' },
-  { label: 'Whitepapers', href: '#' },
-  { label: 'Case Studies', href: '#' },
-  { label: 'Documentation', href: '#' },
-];
-
-const teamLinks: FooterLink[] = [
-  { label: 'Core Team', href: '#' },
-  { label: 'Mentors', href: '#' },
-  { label: 'Alumni', href: '#' },
-  { label: 'Careers', href: '#' },
 ];
 
 const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[] }) => (
@@ -55,24 +40,48 @@ const Footer = () => {
     <footer className="bg-black text-white rounded-t-[40px]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-8 lg:pb-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_400px] lg:gap-16">
+          {/* Left Section */}
           <div>
-
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
               <FooterLinkColumn title="About" links={aboutLinks} />
               <FooterLinkColumn title="Events" links={eventLinks} />
-              {/* <FooterLinkColumn title="Resources" links={resourceLinks} /> */}
-              {/* <FooterLinkColumn title="Team" links={teamLinks} /> */}
             </div>
           </div>
 
+          {/* Right Section */}
           <div className="flex flex-col gap-4 mb-8">
-            <div className="flex  items-center justify-center lg:justify-start gap-6">
-              <Image alt="IITM Logo" width={280} height={260} src="/iitmlogo.png" />
-              <Image alt="nexverse Logo" width={220} height={180} src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/logo1-1759402940398.png" />
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
+              {/* IITM Logo */}
+              <div className="relative w-32 sm:w-40 md:w-48 lg:w-60 h-auto">
+                <Image
+                  alt="IITM Logo"
+                  src="/iitmlogo.png"
+                  width={300}
+                  height={300}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+
+              {/* Nexverse Logo */}
+              <div className="relative w-28 sm:w-36 md:w-44 lg:w-52 h-auto">
+                <Image
+                  alt="Nexverse Logo"
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/logo1-1759402940398.png"
+                  width={300}
+                  height={300}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
             </div>
-            <p className="text-sm text-gray-400">Institute of Information Technology &amp; Management D-29, <br/>Institutional Area, Janakpuri, New Delhi-110058</p></div>
+
+            <p className="text-sm text-gray-400 text-center lg:text-left">
+              Institute of Information Technology &amp; Management D-29, <br />
+              Institutional Area, Janakpuri, New Delhi-110058
+            </p>
+          </div>
         </div>
 
+        {/* Bottom Section */}
         <div className="mt-16 border-t border-white/10 pt-8 lg:mt-24">
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
             <div className="flex items-center gap-x-6">
@@ -86,11 +95,16 @@ const Footer = () => {
                 <Instagram className="h-6 w-6" />
               </a>
             </div>
+
             <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:gap-6">
               <p className="text-sm text-gray-400">© 2024 Nexverse IITM. All rights reserved.</p>
               <div className="flex gap-x-6 text-sm">
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link>
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Terms of Service
+                </Link>
               </div>
             </div>
           </div>
