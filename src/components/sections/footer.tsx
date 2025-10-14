@@ -50,7 +50,7 @@ const Footer = () => {
 
           {/* Right Section */}
           <div className="flex flex-col gap-4 mb-8">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
+            <div className="flex  items-center justify-center lg:justify-start gap-6">
               {/* IITM Logo */}
               <div className="relative w-32 sm:w-40 md:w-48 lg:w-60 h-auto">
                 <Image

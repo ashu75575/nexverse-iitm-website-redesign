@@ -21,7 +21,7 @@ export default function Collage() {
 
   const pictures = [
     { src: "/team_img_1.webp", scale: scale4 },
-    { src: "/celebration.webp ", scale: scale4 },
+    { src: "/celebration.webp", scale: scale4 },
     { src: "/heads_coheads_1.webp", scale: scale5 },
     { src: "/front.jpeg", scale: scale6 },
     { src: "/image.png", scale: scale6 },
